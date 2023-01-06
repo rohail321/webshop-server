@@ -5,3 +5,8 @@ before_install:
   - docker build -t rohail32/server -f Dockerfile.dev .
 script:
   - docker run rohail32/server npm test -- --coverage
+
+after_sucess:
+  - docker build -t rohail32/server .
+  - echo "$DOCKER_PASSWORD" | docker login  --username "$DOCKER_ID" --password-stdin 
+  - docker push rohail32/server
