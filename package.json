@@ -1,0 +1,32 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "devops project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "script": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rohail321/Ecommerce-DevOps.git"
+  },
+  "author": "Rohail",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rohail321/Ecommerce-DevOps/issues"
+  },
+  "homepage": "https://github.com/rohail321/Ecommerce-DevOps#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-validator": "^6.14.2",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.8.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.20",
+    "stripe": "^11.5.0"
+  }
+}
