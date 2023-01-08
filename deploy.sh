@@ -1,7 +1,5 @@
  #! /bin/bash -x
 
-echo "Deploying eShop/server to google cloud \n"
-
 # Returns a list of all gcloud deployment versions
 gcloud_list() {
   local gcloud="$(gcloud app versions list)"
