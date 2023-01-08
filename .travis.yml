@@ -1,20 +1,27 @@
 sudo: required
 services:
   - docker
+
 before_install:
   - docker build -t rohail32/server -f Dockerfile.dev .
+
 script:
   - docker run rohail32/server npm test -- --coverage
 
-after_sucess:
+after_success:
   - openssl enc -aes256 -d -in .enc -out .env -k $SECRET_KEY
   - openssl enc -aes256 -d -in serviceAccount.json.enc -out serviceAccount.json -k $SERVICE_KEY
-  - if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then remove -rf $HOME/google-cloud-sdk; export CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com | bash; fi
+
+  - if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; export CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com | bash; fi
+
   - source /home/travis/google-cloud-sdk/path.bash.inc
-  - gcloud auth activate-service-account web-shop@steel-math-374002.iam.gserviceaccount.com --key-file=$(serviceAccount.json) --project=steel-math-374002  
+  - gcloud auth activate-service-account --key-file serviceAccount.json
+
   - gcloud config set project steel-math-374002
   - gcloud config set compute/zone us-west2-a
+
   - docker build -t rohail32/server .
-  - echo "$DOCKER_PASSWORD" | docker login  --username "$DOCKER_ID" --password-stdin 
+  - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_ID" --password-stdin
   - docker push rohail32/server
+
   - bash ./deploy.sh
