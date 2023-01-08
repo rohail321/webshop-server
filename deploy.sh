@@ -1,9 +1,9 @@
 gcloud_list(){
-    local gcloud="${gcloud app versions list}"
+    local gcloud="$(gcloud app versions list)"
     local array=()
     for word in $gcloud
     do 
-        array=($word)
+        array+=($word)
     done
     echo "${array[@]}"
 }
