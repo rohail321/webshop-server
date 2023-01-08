@@ -12,7 +12,7 @@ gcloud_list(){
 delete_version(){
     local array=($@)
     for ((i=0; i< ${#array[@]}; ++i)); do
-        if[[${array[$i]}==*"0.00"*]]; then
+        if [[${array[$i]}==*"0.00"*]]; then
             local version=${array[$i-1]}
             local command="gcloud -q app version delete $version"
             eval $command
