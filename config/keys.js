@@ -1,6 +1,5 @@
-require('dotenv').config()
 
 module.exports={
-    mongoURI:process.env.MONGO_URI,
-    jwtSecret:process.env.SECRET_KEY
+    mongoURI:"mongodb+srv://rohail:nitricacid@ecommerceapp.iyvkf3w.mongodb.net/?retryWrites=true&w=majority",
+    jwtSecret:"secret"
 }
