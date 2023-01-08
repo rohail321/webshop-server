@@ -20,7 +20,7 @@ delete_version(){
     done
 }
 
-list =$(gcloud_list)
+local list =$(gcloud_list)
 delete_version $list
 
 gcloud  app deploy --stop-previous-version
