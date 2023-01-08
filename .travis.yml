@@ -9,8 +9,6 @@ script:
   - docker run rohail32/server npm test -- --coverage
 
 after_success:
-  - openssl aes-256-cbc -d -in .enc -out .env -k $SECRET_KEY
-  - openssl enc -aes256 -d -in serviceAccount.json.enc -out serviceAccount.json -k $SERVICE_KEY
 
   - if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; export CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com | bash; fi
 
