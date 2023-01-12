@@ -15,7 +15,7 @@ after_success:
   - source /home/travis/google-cloud-sdk/path.bash.inc
   - gcloud auth activate-service-account --key-file serviceAccount.json
 
-  - gcloud config set project steel-math-374002
+  - gcloud config set project webshop-374521
   - gcloud config set compute/zone us-west2-a
 
   - docker build -t rohail32/server .
