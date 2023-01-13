@@ -24,7 +24,7 @@ app.use('/api/payment',require('./routes/paymentApi'))
 
 
 app.get('/',(req,res)=>{
-    res.send('My app workinggggg')
+    res.send('Hellllo')
 })
 
 app.listen(PORT, ()=>{
