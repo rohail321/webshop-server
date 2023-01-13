@@ -23,7 +23,7 @@ router.get('/', auth ,async (req,res)=>{
 
 router.post('/',[
 check('email','Enter a valid email').isEmail(),
-check('password','enter password').exists()
+check('password','enter valid password').exists()
  ], async (req,res)=>{
     const errors=validationResult(req)
     if(!errors.isEmpty()){
